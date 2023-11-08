@@ -13,7 +13,8 @@ Imports:
     here,
     snakecase,
     fs,
-    stringr
+    stringr,
+    styler
 Encoding: UTF-8
 Suggests: 
     gitcreds,
