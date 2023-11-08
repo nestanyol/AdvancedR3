@@ -16,4 +16,5 @@ Imports:
     stringr
 Encoding: UTF-8
 Suggests: 
+    gitcreds,
     renv
