@@ -8,5 +8,7 @@ Imports:
     knitr,
     readxl,
     rmarkdown,
-    tidyr
+    tidyr,
+    usethis,
+    here
 Encoding: UTF-8
