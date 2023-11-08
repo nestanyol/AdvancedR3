@@ -18,3 +18,5 @@ Encoding: UTF-8
 Suggests: 
     gitcreds,
     renv
+URL: https://github.com/nestanyol/AdvancedR3
+BugReports: https://github.com/nestanyol/AdvancedR3/issues
