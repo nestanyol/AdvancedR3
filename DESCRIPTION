@@ -15,3 +15,5 @@ Imports:
     fs,
     stringr
 Encoding: UTF-8
+Suggests: 
+    renv
