@@ -10,5 +10,8 @@ Imports:
     rmarkdown,
     tidyr,
     usethis,
-    here
+    here,
+    snakecase,
+    fs,
+    stringr
 Encoding: UTF-8
