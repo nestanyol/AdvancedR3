@@ -15,7 +15,9 @@ Imports:
     fs,
     stringr,
     styler,
-    targets
+    targets,
+    tarchetypes,
+    quarto
 Encoding: UTF-8
 Suggests: 
     gitcreds,
