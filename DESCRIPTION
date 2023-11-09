@@ -22,3 +22,5 @@ Suggests:
     renv
 URL: https://github.com/nestanyol/AdvancedR3
 BugReports: https://github.com/nestanyol/AdvancedR3/issues
+Depends: 
+    tidyverse
