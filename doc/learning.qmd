@@ -15,7 +15,9 @@ editor:
 ```{r setup}
 targets::tar_config_set(store = here::here("_targets"))
 library(tidyverse)
+library(tidymodels)
 library(targets)
+source(here::here("R/functions.R"))
 lipidomics <- tar_read(lipidomics)
 ```
 
