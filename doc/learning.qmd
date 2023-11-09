@@ -13,12 +13,15 @@ editor:
 ## Header 1
 
 ```{r setup}
-#| include: false
-knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+source(here::here("R/functions.R"))
+lipidomics <- read_csv(here::here("data/lipidomics.csv"))
 ```
 
-```{r}
-# Code chunk
+## Basic statistics
+
+```{r basic stats}
+
 ```
 
 ## This is poorly formatted
