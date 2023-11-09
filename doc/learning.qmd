@@ -24,10 +24,10 @@ lipidomics <- tar_read(lipidomics)
 ## Results
 
 ```{r}
-tar_read(df_stats_by_metabolite) %>% 
-    mutate(MeanSD = glue::glue("{value_mean} ({value_sd})")) %>% 
-    select(Metabolite = metabolite, `Mean SD` = MeanSD) %>% 
-    knitr::kable(caption = "Descriptive statistics of the metabolites")
+tar_read(df_stats_by_metabolite) %>%
+  mutate(MeanSD = glue::glue("{value_mean} ({value_sd})")) %>%
+  select(Metabolite = metabolite, `Mean SD` = MeanSD) %>%
+  knitr::kable(caption = "Descriptive statistics of the metabolites")
 ```
 
 ```{r}
@@ -37,23 +37,86 @@ tar_read(fig_metabolite_distribution)
 ## Build the model
 
 ```{r}
-log_reg_specs <- logistic_reg() %>% 
-    set_engine("glm")
+log_reg_specs <- logistic_reg() %>%
+  set_engine("glm")
 log_reg_specs
-
 ```
 
 ## Data wrangling
 
 ```{r}
-#lipidomic_wide <- lipidomics %>% mutate(metabolite = snakecase::to_snake_case(metabolite)) %>% pivot_wider(names_from = metabolite, values_from = value, values_fn = mean, names_prefix = "metabolite_")
+lipidomics_wide <- lipidomics %>%
+  mutate(metabolite = snakecase::to_snake_case(metabolite)) %>%
+  pivot_wider(names_from = metabolite, values_from = value, values_fn = mean, names_prefix = "metabolite_")
 
 lipidomics %>% column_values_to_snake_case()
-
 ```
 
 ```{r}
 lipidomics %>%
-    column_values_to_snake_case(metabolite) %>% 
-    metabolites_to_wider()
+  column_values_to_snake_case(metabolite) %>%
+  metabolites_to_wider()
+```
+
+```{r}
+recipe(class ~ metabolite_lipid_ch_3_1 + age + gender, data = lipidomic_wide)
+```
+
+```{r}
+# recipe(lipidomic_wide) %>%
+#     update_role(metabolite_lipid_ch_3_1, age, gender, new_role = "predictor") %>%
+#     update_role(class, new_role = "outcome") %>%
+#     step_normalize(starts_with("metabolite_"))
+```
+
+```{r}
+recipe_specs <- lipidomic_wide %>%
+  create_recipe_spec(metabolite_lipid_ch_3_1)
+
+recipe_specs
+```
+
+```{r}
+workflow() %>%
+  add_model(log_reg_specs) %>%
+  add_recipe(recipe_specs)
+```
+
+```{r}
+model_workflow <- create_model_workflow(
+  logistic_reg() %>%
+    set_engine("glm"),
+  lipidomics_wide %>%
+    create_recipe_spec(metabolite_lipid_ch_3_1)
+)
+model_workflow
+```
+
+```{r}
+fitted_model <- model_workflow %>%
+  fit(lipidomics_wide)
+
+fitted_model
+```
+
+```{r}
+fitted_model %>%
+  extract_fit_parsnip() %>%
+  broom::tidy(exponentiate = TRUE)
+```
+
+```{r}
+fitted_model %>%
+  tidy_model_output()
+```
+
+```{r}
+create_model_workflow(
+  logistic_reg() %>%
+    set_engine("glm"),
+  lipidomics_wide %>%
+    create_recipe_spec(metabolite_lipid_ch_3_1)
+) %>%
+  fit(lipidomics_wide) %>%
+  tidy_model_output()
 ```

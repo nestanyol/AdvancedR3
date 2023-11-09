@@ -50,3 +50,41 @@ metabolites_to_wider <- function(data) {
         values_fn = mean,
         names_prefix = "metabolite_")
 }
+
+#' Transformation recipe to pre-process the data
+#'
+#' @param data The lipidomics dataset.
+#' @param metabolite_variable The column of the metabolite variable
+#'
+#' @return Recipe with specifications
+create_recipe_spec <- function(data, metabolite_variable) {
+    recipes::recipe(data) %>%
+        recipes::update_role({{ metabolite_variable }}, age, gender, new_role = "predictor") %>%
+        recipes::update_role(class, new_role = "outcome") %>%
+        recipes::step_normalize(tidyselect::starts_with("metabolite_"))
+
+}
+
+#' Create a workflow object of the model and the transformations
+#'
+#' @param model_specs The model specifications
+#' @param recipe_specs The recipe specifications
+#'
+#' @return workflow object
+create_model_workflow <- function(model_specs, recipe_specs){
+    workflows::workflow() %>%
+        workflows::add_model(model_specs) %>%
+        workflows::add_recipe(recipe_specs)
+}
+
+#' Create a tidy output of the model results.
+#'
+#' @param workflow_fitted_model The model workflow object that has been fitted
+#'
+#' @return A data frame.
+
+tidy_model_output <- function(workflow_fitted_model) {
+    workflow_fitted_model %>%
+        workflows::extract_fit_parsnip() %>%
+        broom::tidy(exponentiate = TRUE)
+}
