@@ -6,10 +6,6 @@ affiliations:
 format: html
 execute:
   echo: true
-editor:
-    markdown: 
-      wrap: 72
-      canonical: true
 ---
 
 ## Header 1
