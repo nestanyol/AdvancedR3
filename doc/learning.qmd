@@ -1,6 +1,8 @@
 ---
 title: "Draft Quarto document"
-author: "Your Name"
+author: "Núria Estanyol"
+affiliations:
+      - name: Chalmers Univerity of Technology
 format: html
 execute:
   echo: true

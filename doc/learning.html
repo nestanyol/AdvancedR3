@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your Name">
+<meta name="author" content="Núria Estanyol">
 
 <title>Draft Quarto document</title>
 <style>
@@ -84,16 +84,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Núria Estanyol </p>
+  </div>
+    </div>
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Your Name </p>
-          </div>
-  </div>
-    
+      
   
     
   </div>
@@ -205,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
+• Dig deeper into tidy modeling with R at https://www.tmwr.org</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(targets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -393,17 +395,7 @@ Computational engine: glm </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>plot_estimates <span class="ot">&lt;-</span> model_estimates <span class="sc">%&gt;%</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> estimate,</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> metabolite,</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmin =</span> estimate <span class="sc">-</span> std.error,</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">xmax =</span> estimate <span class="sc">+</span> std.error</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>() <span class="sc">+</span></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>plot_estimates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_read</span>(fig_model_estimates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="learning_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
