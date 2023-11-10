@@ -2,10 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/nestanyol/AdvancedR3/doc/learning.html</loc>
-    <lastmod>2023-11-10T13:01:50.793Z</lastmod>
+    <lastmod>2023-11-10T13:16:24.897Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/nestanyol/AdvancedR3/TODO.html</loc>
-    <lastmod>2023-11-10T13:01:49.533Z</lastmod>
+    <lastmod>2023-11-10T13:16:24.192Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/nestanyol/AdvancedR3/LICENSE.html</loc>
+    <lastmod>2023-11-10T13:16:23.564Z</lastmod>
   </url>
 </urlset>
