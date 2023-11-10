@@ -5,6 +5,8 @@ editor_options:
     canonical: true
 ---
 
+Check out the project's [website](nestanyol.github.io/AdvancedR3/).
+
 # AdvancedR3: Reproducible research in R workshop
 
 This project collects all the steps done during the course, also
@@ -37,4 +39,3 @@ You'll need to have remotes installed for this to work.
 For more information on this folder and file workflow and setup, check
 out the [prodigenr](https://rostools.github.io/prodigenr) online
 documentation.
-
